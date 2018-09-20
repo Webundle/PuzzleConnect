@@ -1,0 +1,48 @@
+parameters:
+    puzzle_connect.security.exception_listener.class: Puzzle\ConnectBundle\Security\Firewall\ExceptionListener
+
+services:
+    
+    # Security
+    puzzle_connect.security.authentication.form_entry_point:
+        class: Puzzle\ConnectBundle\Security\Http\EntryPoint\XmlHttpRequestEntryPoint
+        arguments: [ '@router' ]
+    
+    # Provider   
+    puzzle_connect.provider.user:
+        class: Puzzle\ConnectBundle\Provider\UserProvider
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+    
+    # Handler
+    puzzle_connect.handler.authentication_success:
+        class: Puzzle\ConnectBundle\Security\Http\Authentication\AuthenticationSuccessHandler
+        arguments: [ '@router', '@security.http_utils', [] ]
+    
+    # Command
+    puzzle_connect.command.create_admin:
+        class: Puzzle\ConnectBundle\Command\CreateAdminCommand
+        autoconfigure: true
+        arguments: [ '@doctrine.orm.entity_manager', '@event_dispatcher' ]
+    
+    puzzle_connect.command.update_admin:
+        class: Puzzle\ConnectBundle\Command\UpdateAdminCommand
+        autoconfigure: true
+        arguments: [ '@doctrine.orm.entity_manager', '@event_dispatcher' ]
+    
+    # Service
+    puzzle_connect.pos.url_generator:
+        class: Puzzle\ConnectBundle\Service\POSGrantUrlGenerator
+        public: true
+        arguments:
+            $config: '%puzzle_connect%'
+    
+    # EventListener
+    puzzle_connect.event_listener.connect:
+        class:  Puzzle\ConnectBundle\EventListener\UserListener
+        arguments: [ '@doctrine.orm.entity_manager', '@router', '@mailer', '@twig', '%user.email%' ]
+        tags:
+            - { name: kernel.event_listener, event: puzzle.connect.user_creating, method: onCreating }
+            - { name: kernel.event_listener, event: puzzle.connect.user_created, method: onCreated }
+            - { name: kernel.event_listener, event: puzzle.connect.user_update_password, method: onUpdatePassword }
+        

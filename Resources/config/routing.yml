@@ -1,0 +1,26 @@
+login:
+    path:  /login
+    defaults: { _controller: 'PuzzleConnectBundle:Security:login' }
+#    host: '%host%'
+
+login_check:
+    path: /login_check
+#    host: '%host%'
+
+logout:
+    path:   /logout
+
+register:
+    path:   /register
+    defaults: { _controller: 'PuzzleConnectBundle:Security:register' }
+    host: '%host%'
+
+oauth_login:
+    path:   /oauth-login
+    defaults: { _controller: 'PuzzleConnectBundle:Security:oauthLoginUrlGenerator' }
+    host: '%host_admin%'
+    
+oauth:
+    path:   /oauth
+    defaults: { _controller: 'PuzzleConnectBundle:Security:oauthConnect' }
+    host: '%host_admin%'
