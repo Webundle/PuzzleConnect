@@ -1,5 +1,5 @@
 {
-	"name" : "webundle/puzzle-client-security",
+	"name" : "webundle/puzzle-connect",
 	"description" : "Manages user security",
 	"type" : "symfony-bundle",
 	"authors" : [{
@@ -28,10 +28,10 @@
 	},
 	"autoload" : {
 		"psr-0" : {
-			"Webundle\\Puzzle\\UserBundle" : ""
+			"Webundle\\Puzzle\\ConnectBundle" : ""
 		}
 	},
-	"target-dir" : "Webundle/Puzzle/UserBundle",
+	"target-dir" : "Webundle/Puzzle/ConnectBundle",
 	"extra" : {
 		"branch-alias" : {
 			"dev-master" : "1.0-dev"
