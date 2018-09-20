@@ -37,6 +37,11 @@ services:
         arguments:
             $config: '%puzzle_connect%'
     
+    puzzle_connect.api_client:
+        class: Puzzle\ConnectBundle\Service\PuzzleAPIClient  
+        arguments: [ "@doctrine.orm.entity_manager","@router", "@puzzle_connect.pos.url_generator", "%puzzle_connect.base_apis_uri%", "%puzzle_connect.apis_version%" ]
+    
+    
     # EventListener
     puzzle_connect.event_listener.connect:
         class:  Puzzle\ConnectBundle\EventListener\UserListener
