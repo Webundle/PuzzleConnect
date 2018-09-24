@@ -27,8 +27,8 @@
 		"twig/twig" : "^1.0||^2.0"
 	},
 	"autoload" : {
-		"psr-0" : {
-			"Webundle\\Puzzle\\ConnectBundle" : ""
+		"psr-4" : {
+			"Puzzle\\ConnectBundle" : ""
 		}
 	},
 	"target-dir" : "Webundle/Puzzle/ConnectBundle",
