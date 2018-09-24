@@ -15,7 +15,7 @@ register:
     defaults: { _controller: 'PuzzleConnectBundle:Security:register' }
     host: '%host%'
 
-oauth_login:
+puzzle_oauth_login:
     path:   /oauth-login
     defaults: { _controller: 'PuzzleConnectBundle:Security:oauthLoginUrlGenerator' }
     host: '%host_admin%'

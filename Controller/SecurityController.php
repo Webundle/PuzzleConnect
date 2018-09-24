@@ -48,7 +48,7 @@ class SecurityController extends Controller
 	    : null;
 	    
 	    if ($request->getHost() === $this->getParameter('host_admin')){
-	        return $this->redirectToRoute('oauth_login', $request->query->all());
+	        return $this->redirectToRoute('puzzle_oauth_login', $request->query->all());
 	    }
 	    
 	    return $this->render($this->getParameter('puzzle_app.template_bundle')."/Security/login.html.twig", array(
