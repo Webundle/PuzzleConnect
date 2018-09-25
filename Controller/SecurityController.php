@@ -170,8 +170,8 @@ class SecurityController extends Controller
 	            
 	            if (!$user = $em->getRepository(User::class)->findOneBy(array('email' => $apiUser['email']))){
 	                $user = new User();
-	                $user->setFirstName($apiUser['first_name']);
-	                $user->setLastName($apiUser['last_name'] ?? "");
+	                $user->setFirstName($apiUser['firstName']);
+	                $user->setLastName($apiUser['lastName'] ?? "");
 	                $user->setEmail($apiUser['email']);
 	                $user->setUsername($apiUser['email']);
 	                $user->setPlainPassword(TokenGenerator::generate(8));
