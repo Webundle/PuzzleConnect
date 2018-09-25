@@ -51,7 +51,7 @@ services:
           
     puzzle_connect.event_listener.connect:
         class:  Puzzle\ConnectBundle\EventListener\UserListener
-        arguments: [ '@doctrine.orm.entity_manager', '@router', '@mailer', '@twig', '%user.email%', '%confirmation_route%' ]
+        arguments: [ '@doctrine.orm.entity_manager', '@router', '@mailer', '@twig', '%user.mail%', '%confirmation_route%' ]
         tags:
             - { name: kernel.event_listener, event: puzzle.connect.user_creating, method: onCreating }
             - { name: kernel.event_listener, event: puzzle.connect.user_created, method: onCreated }
